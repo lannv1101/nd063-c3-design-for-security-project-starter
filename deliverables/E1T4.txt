@@ -1,0 +1,14 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+The load balancer communicates with the web service on port 5000.
+This means the web service does not need to have an ingress on port 80, yet its security group has port 80 open to the entire Internet. We should remove the ingress for port 80. 
+We should also limit the ingress for port 5000 to the load balancer security group. 
+We should especially remove the ingress rule allowing all traffic from all protocols and port ranges from the Internet. 
+Additionally, the web service has an ingress on port 22 for SSH, and this ingress is available to the internet. 
+We can eliminate the need for this ingress entirely by using the immutable instance strategy—provisioning a new instance of the web service when we need to make changes and terminating the existing instance once the new 
+
+# Poor practice 2
+The second the configuration of the default security group.
+The default security group allows all traffic using all protocols on all ports.
+The default security group should restrict all inbound and outbound traffic, forcing us to configure access using the least-privilege principle.

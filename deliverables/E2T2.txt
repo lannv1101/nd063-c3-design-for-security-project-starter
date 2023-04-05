@@ -1,0 +1,11 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+All Inspector findings are related to the CloudFormation code we deployed.
+We should eliminate the web services's inbound rules allowing traffic from anywhere except from the application load balancer security group.
+
+
+All three high-severity issues that Security Hub found are related to the CloudFormation code. 
+We should fix these by removing SSH access to our instances, instead using immutable instances,
+ changing the default security group in our VPC to restrict all traffic; and removing the security group inbound and outbound rules that allow all traffic on all ports from all protocols. 

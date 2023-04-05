@@ -1,0 +1,23 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+CFRipper
+terrascan
+Regula
+
+### Example vulnerability
+terrascan : Ingress open to 0.0.0.0/0
+Regula: IAM policies with full "*:*" administrative privileges
+EC2SecurityGroupMissingEgressRule: Missing egress rule in NoIngressSecurityGroup means all traffic is allowed outbound. Make this explicit if it is desired configuration
+
+##Scan AMI’s or containers for OS vulnerabilities
+Anchore Engine
+
+### Example vulnerability
+CVE-2017-17458 | critical | mercurial | fixed in 4.4.1 | In Mercurial before 4.4.1, it is possible that a specially malformed repository can cause Git sub-repositories to run arbitrary code.
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Config
+
+### Example vulnerability
+s3-bucket-server-side-encryption-enabled: Checks that your Amazon S3 bucket either has S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption.
